@@ -1,5 +1,4 @@
 <?php
-  
   namespace WGenial\S3ObjectsStreamZip;
 
   use Aws\S3\Exception\S3Exception;
@@ -9,7 +8,9 @@
 
   class S3ObjectsStreamZip
   {
+    
     protected $auth = array();
+    
     protected $s3Client;
 
     public function __construct($auth)
@@ -37,7 +38,6 @@
         $fileURLS3 = "s3://{$bucket}/{$file['path']}";
         
         // https://docs.aws.amazon.com/aws-sdk-php/v3/guide/service/s3-stream-wrapper.html#downloading-data
-
         if ($stream = fopen($fileURLS3, 'r', false, $context)) {
           $zip->addFileFromStream($fileName, $stream);
         }
@@ -160,3 +160,5 @@
       }
     }
 }
+
+?>
