@@ -1,6 +1,6 @@
 # S3ObjectsStreamZip
 
-[![Packagist](https://img.shields.io/packagist/v/wgenial/s3-objects-stream-zip-php.svg)](https://packagist.org/packages/wgenial/s3-bucket-stream-zip-php)
+[![Packagist](https://img.shields.io/packagist/v/wgenial/s3-objects-stream-zip-php.svg)](https://packagist.org/packages/wgenial/s3-objects-stream-zip-php)
 [![GitHub license](https://img.shields.io/github/license/wgenial/s3-objects-stream-zip-php.svg)](https://github.com/wgenial/s3-objects-stream-zip-php/blob/master/LICENSE)
 
 
