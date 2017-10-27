@@ -131,15 +131,13 @@
         else if (empty($file['path'])) {
           throw new InvalidParamsException('The `path` cannot be an empty string.');
         }
-        else {
-          // https://docs.aws.amazon.com/aws-sdk-php/v3/guide/service/s3-stream-wrapper.html#other-object-functions
-          $fileURLS3 = "s3://{$bucket}/{$file['path']}";
-          if (!file_exists($fileURLS3)) {
-            throw new InvalidParamsException("The file `{$file['path']}` you have requested does not exist.");
-          }
-          else if (!is_file($fileURLS3)) {
-            throw new InvalidParamsException("The action cannot be completed because `{$file['path']}` it's not a file.");
-          }
+        // https://docs.aws.amazon.com/aws-sdk-php/v3/guide/service/s3-stream-wrapper.html#other-object-functions
+        $fileURLS3 = "s3://{$bucket}/{$file['path']}";
+        if (!file_exists($fileURLS3)) {
+          throw new InvalidParamsException("The file `{$file['path']}` you have requested does not exist.");
+        }
+        else if (!is_file($fileURLS3)) {
+          throw new InvalidParamsException("The action cannot be completed because `{$file['path']}` it's not a file.");
         }
       }
     }

@@ -22,7 +22,7 @@
       )
     ));
 
-    $bucket = 'my-bucket'; // required
+    $bucket = 'your-s3-bucket'; // required
 
     $files = array(
       array(
