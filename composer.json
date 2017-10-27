@@ -25,5 +25,8 @@
 			"homepage": "https://github.com/giovanigenerali",
 			"role": "Developer"
     }
-	]
+	],
+	"scripts": {
+		"test": "./vendor/bin/phpunit --configuration ./phpunit.xml --colors=always"
+	}
 }

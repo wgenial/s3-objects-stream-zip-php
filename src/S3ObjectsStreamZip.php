@@ -49,23 +49,23 @@
 
     protected function authValidation($auth)
     {
-      if (!isset($auth['version'])) {
+      if (!isset($auth['version']) || empty($auth['version'])) {
         throw new InvalidParamsException('$auth parameter to constructor requires a `version` attribute.');
       }
 
-      if (!isset($auth['region'])) {
+      if (!isset($auth['region']) || empty($auth['region'])) {
         throw new InvalidParamsException('$auth parameter to constructor requires a `region` attribute.');
       }
 
-      if (!isset($auth['credentials'])) {
+      if (!isset($auth['credentials']) || empty($auth['credentials'])) {
         throw new InvalidParamsException('$auth parameter to constructor requires a `credentials` attribute.');
       }
 
-      if (!isset($auth['credentials']['key'])) {
+      if (!isset($auth['credentials']['key']) || empty($auth['credentials']['key'])) {
         throw new InvalidParamsException('$auth["credentials"] parameter to constructor requires a `key` attribute.');
       }
 
-      if (!isset($auth['credentials']['secret'])) {
+      if (!isset($auth['credentials']['secret']) || empty($auth['credentials']['secret'])) {
         throw new InvalidParamsException('$auth["credentials"] parameter to constructor requires a `secret` attribute.');
       }
 
