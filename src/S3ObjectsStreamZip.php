@@ -95,9 +95,7 @@
       else if (empty($params["bucket"])) {
         throw new InvalidParamsException('The parameter `bucket` cannot be an empty string.');
       } 
-      else {
-        $this->doesBucketExists($params["bucket"]);
-      }
+      $this->doesBucketExists($params["bucket"]);
 
       // files
       if (!isset($params["files"])) {
@@ -112,9 +110,7 @@
       else if (!is_array(current($params["files"]))) {
         throw new InvalidParamsException('The array `files` requires a `path` attribute.');
       }
-      else {
-        $this->objectsValidation($params["bucket"], $params["files"]);
-      }
+      $this->objectsValidation($params["bucket"], $params["files"]);
 
       // zipname
       if (!isset($params["zipname"])) {
@@ -148,7 +144,8 @@
       }
     }
 
-    protected function doesBucketExists($bucket) {
+    protected function doesBucketExists($bucket) 
+    {
       try {
         // http://docs.aws.amazon.com/aws-sdk-php/v3/api/api-s3-2006-03-01.html#headbucket
         $this->s3Client->headBucket(array(
