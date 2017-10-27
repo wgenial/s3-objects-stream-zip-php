@@ -113,7 +113,7 @@
         throw new InvalidParamsException('The array `files` requires a `path` attribute.');
       }
       else {
-        $this->objectsValidation($params["files"]);
+        $this->objectsValidation($params["bucket"], $params["files"]);
       }
 
       // zipname
@@ -126,7 +126,7 @@
       
     }
 
-    protected function objectsValidation($files)
+    protected function objectsValidation($bucket, $files)
     {
       foreach ($files as $file) {
         if (!array_key_exists('path', $file)) {
@@ -137,7 +137,7 @@
         }
         else {
           // https://docs.aws.amazon.com/aws-sdk-php/v3/guide/service/s3-stream-wrapper.html#other-object-functions
-          $fileURLS3 = "s3://{$params['bucket']}/{$file['path']}";
+          $fileURLS3 = "s3://{$bucket}/{$file['path']}";
           if (!file_exists($fileURLS3)) {
             throw new InvalidParamsException("The file `{$file['path']}` you have requested does not exist.");
           }
