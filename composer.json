@@ -1,9 +1,9 @@
 {
 	"name": "wgenial/s3-objects-stream-zip-php",
+	"homepage": "https://github.com/wgenial/s3-objects-stream-zip-php",
 	"description": "S3ObjectsStreamZip is a PHP library to stream objects from AWS S3 as a zip file.",
 	"keywords": ["aws-s3","zip","compress","ziparchive","s3-bucket","s3-storage","amazon-s3-storage","amazon-s3", "aws-php-sdk"],
 	"type": "library",
-	"homepage": "https://github.com/wgenial/s3-objects-stream-zip-php",
 	"require": {
 		"aws/aws-sdk-php": "^3.0",
 		"php": ">=7.0",
