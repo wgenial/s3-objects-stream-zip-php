@@ -198,7 +198,7 @@
       );
       $zipname = '';
 
-      $zipStream->zipObjects($bucket, $object, $zipname);
+      $zipStream->zipObjects($bucket, $objects, $zipname);
     }
 
   }
