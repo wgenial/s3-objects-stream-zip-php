@@ -1,8 +1,6 @@
 <?php
-
   set_time_limit(0);
-
-  date_default_timezone_set('America/Sao_Paulo');
+  // date_default_timezone_set('America/Sao_Paulo');
 
   include __DIR__.'/../vendor/autoload.php';
   
@@ -11,7 +9,6 @@
   use WGenial\S3ObjectsStreamZip\Exception\InvalidParamsException;
 
   try {
-
     // http://docs.aws.amazon.com/aws-sdk-php/v3/guide/guide/credentials.html#hardcoded-credentials
     $zipStream = new S3ObjectsStreamZip(array(
       'version' => 'latest', // http://docs.aws.amazon.com/aws-sdk-php/v3/guide/guide/configuration.html#version
@@ -23,8 +20,7 @@
     ));
 
     $bucket = 'your-s3-bucket'; // required
-
-    $files = array(
+    $objects = array(
       array(
         'path' => 'file-text.txt' // required
       ),
@@ -36,14 +32,16 @@
         'path' => 'logs/file-log.txt' // required
       ),
       array(
-        'name' => 'image.png', // you can rename a file to zip, not required
+        'name' => 'image.png', // you can rename an object to zip, not required
         'path' => 'file-image.png' // required
       )
     );
 
     $zipname = 'compress.zip'; // required
+
+    $checkObjectExist = false; // no required | default = false
     
-    $zipStream->sendObjects($bucket, $files, $zipname);
+    $zipStream->zipObjects($bucket, $objects, $zipname, $checkObjectExist);
   } 
   catch (InvalidParamsException $e) {
     echo $e->getMessage();

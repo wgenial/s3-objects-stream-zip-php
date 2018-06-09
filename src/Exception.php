@@ -3,4 +3,3 @@
 
   abstract class Exception extends \Exception {
   }
-?>

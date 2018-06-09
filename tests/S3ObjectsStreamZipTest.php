@@ -83,7 +83,7 @@
     /**
     * @expectedException \WGenial\S3ObjectsStreamZip\Exception\InvalidParamsException
     */
-    public function testeInvalidParamsSendObjects()
+    public function testeInvalidParamsToZipObjects()
     {
       $zipStream = new S3ObjectsStreamZip(array(
         'version' => 'latest',
@@ -95,16 +95,16 @@
       ));
 
       $bucket = '';
-      $files = array();
+      $objects = array();
       $zipname = '';
 
-      $zipStream->sendObjects($bucket, $files, $zipname);
+      $zipStream->zipObjects($bucket, $objects, $zipname);
     }
 
     /**
     * @expectedException \WGenial\S3ObjectsStreamZip\Exception\InvalidParamsException
     */
-    public function testeInvalidFilesArrayEmptyNameAttributeSendObjects()
+    public function testeInvalidObjectsArrayEmptyNameAttributeToZipObjects()
     {
       $zipStream = new S3ObjectsStreamZip(array(
         'version' => 'latest',
@@ -116,7 +116,7 @@
       ));
 
       $bucket = 'my-bucket';
-      $files = array(
+      $objects = array(
         array(
           'name' => '',
           'path' => 'file.txt'
@@ -124,13 +124,13 @@
       );
       $zipname = 'zipfile';
 
-      $zipStream->sendObjects($bucket, $files, $zipname);
+      $zipStream->zipObjects($bucket, $objects, $zipname);
     }
 
     /**
     * @expectedException \WGenial\S3ObjectsStreamZip\Exception\InvalidParamsException
     */
-    public function testeInvalidFilesArrayEmptyPathAttributeSendObjects()
+    public function testeInvalidObjectsArrayEmptyPathAttributeToZipObjects()
     {
       $zipStream = new S3ObjectsStreamZip(array(
         'version' => 'latest',
@@ -142,20 +142,20 @@
       ));
 
       $bucket = 'my-bucket';
-      $files = array(
+      $objects = array(
         array(
           'path' => ''
         )
       );
       $zipname = 'zipfile';
 
-      $zipStream->sendObjects($bucket, $files, $zipname);
+      $zipStream->zipObjects($bucket, $objects, $zipname);
     }
 
     /**
     * @expectedException \WGenial\S3ObjectsStreamZip\Exception\InvalidParamsException
     */
-    public function testeInvalidFilesArrayEmptySendObjects()
+    public function testeInvalidObjectsArrayEmptyToZipObjects()
     {
       $zipStream = new S3ObjectsStreamZip(array(
         'version' => 'latest',
@@ -167,18 +167,18 @@
       ));
 
       $bucket = 'my-bucket';
-      $files = array(
+      $objects = array(
         array()
       );
       $zipname = 'zipfile';
 
-      $zipStream->sendObjects($bucket, $files, $zipname);
+      $zipStream->zipObjects($bucket, $objects, $zipname);
     }
 
     /**
     * @expectedException \WGenial\S3ObjectsStreamZip\Exception\InvalidParamsException
     */
-    public function testeInvalidZipnameParamSendObjects()
+    public function testeInvalidZipnameParamToZipObjects()
     {
       $zipStream = new S3ObjectsStreamZip(array(
         'version' => 'latest',
@@ -190,7 +190,7 @@
       ));
 
       $bucket = 'my-bucket';
-      $files = array(
+      $objects = array(
         array(
           'name' => 'text.txt',
           'path' => 'file.txt'
@@ -198,7 +198,7 @@
       );
       $zipname = '';
 
-      $zipStream->sendObjects($bucket, $files, $zipname);
+      $zipStream->zipObjects($bucket, $object, $zipname);
     }
 
   }
