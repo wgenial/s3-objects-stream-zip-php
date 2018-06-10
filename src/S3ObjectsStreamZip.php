@@ -142,12 +142,12 @@
         }
 
         if ($checkObjectExist) {
-          $this->doesObjectExists($bucket, $object);
+          $this->doesObjectExist($bucket, $object);
         }
       }
     }
 
-    protected function doesObjectExists($bucket, $object)
+    protected function doesObjectExist($bucket, $object)
     {
       // https://docs.aws.amazon.com/aws-sdk-php/v3/guide/service/s3-stream-wrapper.html#other-object-functions
       $objectDir = "s3://{$bucket}/{$object['path']}";
