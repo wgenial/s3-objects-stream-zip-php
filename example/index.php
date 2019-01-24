@@ -1,9 +1,6 @@
 <?php
-  set_time_limit(0);
-  // date_default_timezone_set('America/Sao_Paulo');
-
   include __DIR__.'/../vendor/autoload.php';
-  
+
   use Aws\S3\Exception\S3Exception;
   use WGenial\S3ObjectsStreamZip\S3ObjectsStreamZip;
   use WGenial\S3ObjectsStreamZip\Exception\InvalidParamsException;
@@ -40,12 +37,12 @@
     $zipname = 'compress.zip'; // required
 
     $checkObjectExist = false; // no required | default = false
-    
+
     $zipStream->zipObjects($bucket, $objects, $zipname, $checkObjectExist);
-  } 
+  }
   catch (InvalidParamsException $e) {
     echo $e->getMessage();
-  } 
+  }
   catch (S3Exception $e) {
     echo $e->getMessage();
   }

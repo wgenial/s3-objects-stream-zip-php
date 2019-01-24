@@ -20,8 +20,8 @@
     public function zipObjects($bucket, $objects, $zipname, $checkObjectExist = false)
     {
       $this->paramsValidation(array(
-        "bucket" => $bucket, 
-        "objects" => $objects, 
+        "bucket" => $bucket,
+        "objects" => $objects,
         "zipname" => $zipname,
         "checkObjectExist" => $checkObjectExist
       ));
@@ -86,10 +86,10 @@
       $this->s3Client->registerStreamWrapper();
     }
 
-    protected function paramsValidation($params) 
+    protected function paramsValidation($params)
     {
       // bucket validation
-      $this->bucketVaidation($params["bucket"]);
+      $this->bucketValidation($params["bucket"]);
 
       // objects validation
       $this->objectsValidation($params["bucket"], $params["objects"], $params["checkObjectExist"]);
@@ -98,7 +98,7 @@
       $this->zipnameValidation($params["zipname"]);
     }
 
-    protected function bucketVaidation($bucket)
+    protected function bucketValidation($bucket)
     {
       if (!isset($bucket)) {
         throw new InvalidParamsException('The parameter `bucket` is required.');
@@ -111,8 +111,8 @@
         // http://docs.aws.amazon.com/aws-sdk-php/v3/api/api-s3-2006-03-01.html#headbucket
         $this->s3Client->headBucket(array(
           'Bucket' => $bucket
-        ));  
-      } 
+        ));
+      }
       catch (S3Exception $e) {
         throw new InvalidParamsException("Bucket `{$bucket}` does not exists and/or you have not permission to access it.");
       }
@@ -151,7 +151,7 @@
     {
       // https://docs.aws.amazon.com/aws-sdk-php/v3/guide/service/s3-stream-wrapper.html#other-object-functions
       $objectDir = "s3://{$bucket}/{$object['path']}";
-      
+
       if (!file_exists($objectDir)) {
         throw new InvalidParamsException("The object `{$object['path']}` you have requested does not exist.");
       }
