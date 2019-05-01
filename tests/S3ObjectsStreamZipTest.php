@@ -8,197 +8,207 @@
   class S3ObjectsStreamZipTest extends \PHPUnit\Framework\TestCase
   {
 
-    /**
-    * @expectedException \WGenial\S3ObjectsStreamZip\Exception\InvalidParamsException
-    */
     public function testInvalidParams()
     {
-      new S3ObjectsStreamZip(array(
-      ));
+      try {
+        new S3ObjectsStreamZip(array());
+      } catch (Exception $e) {
+        $this->assertEquals('$auth parameter to constructor requires a `version` attribute.', $e->getMessage());
+      }
     }
 
-    /**
-    * @expectedException \WGenial\S3ObjectsStreamZip\Exception\InvalidParamsException
-    */
     public function testInvalidVersionParam()
     {
-      new S3ObjectsStreamZip(array(
-        'version' => ''
-      ));
+      try {
+        new S3ObjectsStreamZip(array(
+          'version' => ''
+        ));
+      } catch (Exception $e) {
+        $this->assertEquals('$auth parameter to constructor requires a `version` attribute.', $e->getMessage());
+      }
     }
 
-    /**
-    * @expectedException \WGenial\S3ObjectsStreamZip\Exception\InvalidParamsException
-    */
     public function testInvalidRegionParam()
     {
-      new S3ObjectsStreamZip(array(
-        'version' => 'latest',
-        'region' => ''
-      ));
+      try {
+        new S3ObjectsStreamZip(array(
+          'version' => 'latest',
+          'region' => ''
+        ));
+      } catch (Exception $e) {
+        $this->assertEquals('$auth parameter to constructor requires a `region` attribute.', $e->getMessage());
+      }
     }
 
-    /**
-    * @expectedException \WGenial\S3ObjectsStreamZip\Exception\InvalidParamsException
-    */
     public function testInvalidCredentialsParam()
     {
-      new S3ObjectsStreamZip(array(
-        'version' => 'latest',
-        'region' => 'us-east-1',
-        'credentials' => array(
-        )
-      ));
+      try {
+        new S3ObjectsStreamZip(array(
+          'version' => 'latest',
+          'region' => 'us-east-1',
+          'credentials' => array(
+          )
+        ));
+      } catch (Exception $e) {
+        $this->assertEquals('$auth parameter to constructor requires a `credentials` attribute.', $e->getMessage());
+      }
     }
 
-    /**
-    * @expectedException \WGenial\S3ObjectsStreamZip\Exception\InvalidParamsException
-    */
     public function testInvalidCredentialsKeyParam()
     {
-      new S3ObjectsStreamZip(array(
-        'version' => 'latest',
-        'region' => 'us-east-1',
-        'credentials' => array(
-          'key' => ''
-        )
-      ));
+      try {
+        new S3ObjectsStreamZip(array(
+          'version' => 'latest',
+          'region' => 'us-east-1',
+          'credentials' => array(
+            'key' => ''
+          )
+        ));
+      } catch (Exception $e) {
+        $this->assertEquals('$auth["credentials"] parameter to constructor requires a `key` attribute.', $e->getMessage());
+      }
     }
 
-    /**
-    * @expectedException \WGenial\S3ObjectsStreamZip\Exception\InvalidParamsException
-    */
     public function testInvalidCredentialsSecretParam()
     {
-      new S3ObjectsStreamZip(array(
-        'version' => 'latest',
-        'region' => 'us-east-1',
-        'credentials' => array(
-          'key' => 'aws-key',
-          'secret' => ''
-        )
-      ));
+      try {
+        new S3ObjectsStreamZip(array(
+          'version' => 'latest',
+          'region' => 'us-east-1',
+          'credentials' => array(
+            'key' => 'aws-key',
+            'secret' => ''
+          )
+        ));
+      } catch (Exception $e) {
+        $this->assertEquals('$auth["credentials"] parameter to constructor requires a `secret` attribute.', $e->getMessage());
+      }
     }
 
-    /**
-    * @expectedException \WGenial\S3ObjectsStreamZip\Exception\InvalidParamsException
-    */
     public function testeInvalidParamsToZipObjects()
     {
-      $zipStream = new S3ObjectsStreamZip(array(
-        'version' => 'latest',
-        'region' => 'us-east-1',
-        'credentials' => array(
-          'key' => 'aws-key',
-          'secret' => 'aws-secret'
-        )
-      ));
+      try {
+        $zipStream = new S3ObjectsStreamZip(array(
+          'version' => 'latest',
+          'region' => 'us-east-1',
+          'credentials' => array(
+            'key' => 'aws-key',
+            'secret' => 'aws-secret'
+          )
+        ));
 
-      $bucket = '';
-      $objects = array();
-      $zipname = '';
+        $bucket = '';
+        $objects = array();
+        $zipname = '';
 
-      $zipStream->zipObjects($bucket, $objects, $zipname);
+        $zipStream->zipObjects($bucket, $objects, $zipname);
+      } catch (Exception $e) {
+        $this->assertEquals('The parameter `bucket` cannot be an empty string.', $e->getMessage());
+      }
     }
 
-    /**
-    * @expectedException \WGenial\S3ObjectsStreamZip\Exception\InvalidParamsException
-    */
     public function testeInvalidObjectsArrayEmptyNameAttributeToZipObjects()
     {
-      $zipStream = new S3ObjectsStreamZip(array(
-        'version' => 'latest',
-        'region' => 'us-east-1',
-        'credentials' => array(
-          'key' => 'aws-key',
-          'secret' => 'aws-secret'
-        )
-      ));
+      try {
+        $zipStream = new S3ObjectsStreamZip(array(
+          'version' => 'latest',
+          'region' => 'us-east-1',
+          'credentials' => array(
+            'key' => 'aws-key',
+            'secret' => 'aws-secret'
+          )
+        ));
 
-      $bucket = 'my-bucket';
-      $objects = array(
-        array(
-          'name' => '',
-          'path' => 'file.txt'
-        )
-      );
-      $zipname = 'zipfile';
+        $bucket = 'my-bucket';
+        $objects = array(
+          array(
+            'name' => '',
+            'path' => 'file.txt'
+          )
+        );
+        $zipname = 'zipfile';
 
-      $zipStream->zipObjects($bucket, $objects, $zipname);
+        $zipStream->zipObjects($bucket, $objects, $zipname);
+      } catch (Exception $e) {
+        $this->assertEquals('Bucket `my-bucket` does not exists and/or you have not permission to access it.', $e->getMessage());
+      }
     }
 
-    /**
-    * @expectedException \WGenial\S3ObjectsStreamZip\Exception\InvalidParamsException
-    */
     public function testeInvalidObjectsArrayEmptyPathAttributeToZipObjects()
     {
-      $zipStream = new S3ObjectsStreamZip(array(
-        'version' => 'latest',
-        'region' => 'us-east-1',
-        'credentials' => array(
-          'key' => 'aws-key',
-          'secret' => 'aws-secret'
-        )
-      ));
+      try {
+        $zipStream = new S3ObjectsStreamZip(array(
+          'version' => 'latest',
+          'region' => 'us-east-1',
+          'credentials' => array(
+            'key' => 'aws-key',
+            'secret' => 'aws-secret'
+          )
+        ));
 
-      $bucket = 'my-bucket';
-      $objects = array(
-        array(
-          'path' => ''
-        )
-      );
-      $zipname = 'zipfile';
+        $bucket = 'my-bucket';
+        $objects = array(
+          array(
+            'path' => ''
+          )
+        );
+        $zipname = 'zipfile';
 
-      $zipStream->zipObjects($bucket, $objects, $zipname);
+        $zipStream->zipObjects($bucket, $objects, $zipname);
+      } catch (Exception $e) {
+        $this->assertEquals('Bucket `my-bucket` does not exists and/or you have not permission to access it.', $e->getMessage());
+      }
     }
 
-    /**
-    * @expectedException \WGenial\S3ObjectsStreamZip\Exception\InvalidParamsException
-    */
     public function testeInvalidObjectsArrayEmptyToZipObjects()
     {
-      $zipStream = new S3ObjectsStreamZip(array(
-        'version' => 'latest',
-        'region' => 'us-east-1',
-        'credentials' => array(
-          'key' => 'aws-key',
-          'secret' => 'aws-secret'
-        )
-      ));
+      try {
+        $zipStream = new S3ObjectsStreamZip(array(
+          'version' => 'latest',
+          'region' => 'us-east-1',
+          'credentials' => array(
+            'key' => 'aws-key',
+            'secret' => 'aws-secret'
+          )
+        ));
 
-      $bucket = 'my-bucket';
-      $objects = array(
-        array()
-      );
-      $zipname = 'zipfile';
+        $bucket = 'my-bucket';
+        $objects = array(
+          array()
+        );
+        $zipname = 'zipfile';
 
-      $zipStream->zipObjects($bucket, $objects, $zipname);
+        $zipStream->zipObjects($bucket, $objects, $zipname);
+      } catch (Exception $e) {
+        $this->assertEquals('Bucket `my-bucket` does not exists and/or you have not permission to access it.', $e->getMessage());
+      }
     }
 
-    /**
-    * @expectedException \WGenial\S3ObjectsStreamZip\Exception\InvalidParamsException
-    */
     public function testeInvalidZipnameParamToZipObjects()
     {
-      $zipStream = new S3ObjectsStreamZip(array(
-        'version' => 'latest',
-        'region' => 'us-east-1',
-        'credentials' => array(
-          'key' => 'aws-key',
-          'secret' => 'aws-secret'
-        )
-      ));
+      try {
+        $zipStream = new S3ObjectsStreamZip(array(
+          'version' => 'latest',
+          'region' => 'us-east-1',
+          'credentials' => array(
+            'key' => 'aws-key',
+            'secret' => 'aws-secret'
+          )
+        ));
 
-      $bucket = 'my-bucket';
-      $objects = array(
-        array(
-          'name' => 'text.txt',
-          'path' => 'file.txt'
-        )
-      );
-      $zipname = '';
+        $bucket = 'my-bucket';
+        $objects = array(
+          array(
+            'name' => 'text.txt',
+            'path' => 'file.txt'
+          )
+        );
+        $zipname = '';
 
-      $zipStream->zipObjects($bucket, $objects, $zipname);
+        $zipStream->zipObjects($bucket, $objects, $zipname);
+      } catch (Exception $e) {
+        $this->assertEquals('Bucket `my-bucket` does not exists and/or you have not permission to access it.', $e->getMessage());
+      }
     }
 
   }
