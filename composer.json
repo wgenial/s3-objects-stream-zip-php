@@ -6,7 +6,8 @@
 	"type": "library",
 	"require": {
 		"aws/aws-sdk-php": "^3.93",
-		"maennchen/zipstream-php": "^1.1"
+		"maennchen/zipstream-php": "^1.1",
+		"guzzlehttp/guzzle": "^6.3"
 	},
 	"require-dev": {
 		"phpunit/phpunit": "^8.1"

@@ -3,18 +3,48 @@
 
   use Aws\S3\Exception\S3Exception;
   use Aws\S3\S3Client;
+
   use WGenial\S3ObjectsStreamZip\Exception\InvalidParamsException;
+
   use ZipStream\ZipStream;
+  use ZipStream\Option\Method as ArchiveMethod;
+  use ZipStream\Option\Archive as ArchiveOptions;
+
+  use GuzzleHttp\Client as HttpClient;
 
   class S3ObjectsStreamZip
   {
     protected $auth = array();
+    protected $opt;
     protected $s3Client;
 
     public function __construct($auth)
     {
       $this->authValidation($auth);
       $this->s3Client();
+      
+      $this->opt = new ArchiveOptions();
+      $this->opt->setLargeFileMethod(ArchiveMethod::STORE());
+    }
+
+    public function setEnableZip64()
+    {
+        $this->opt->setEnableZip64(TRUE);
+    }
+
+    public function setContentDisposition()
+    {
+        $this->opt->setContentDisposition('attachment');
+    }
+
+    public function setSendHttpHeaders()
+    {
+        $this->opt->setSendHttpHeaders(TRUE);
+    }
+
+    public function  setContentType($contentType = 'application/zip')
+    {
+       $this->opt->setContentType('application/zip');
     }
 
     public function zipObjects($bucket, $objects, $zipname, $checkObjectExist = false)
@@ -26,19 +56,34 @@
         "checkObjectExist" => $checkObjectExist
       ));
 
-      $zip = new ZipStream($zipname);
+      $zip = new ZipStream($zipname, $this->opt);
+      $httpClient  = new HttpClient();
 
-      foreach ($objects as $object) {
+      foreach ($objects as $object)
+      {
         $objectName = isset($object['name']) ? $object['name'] : basename($object['path']);
 
         $context = stream_context_create(array(
           's3' => array('seekable' => true)
         ));
 
-        // https://docs.aws.amazon.com/aws-sdk-php/v3/guide/service/s3-stream-wrapper.html#downloading-data
-        $objectDir = "s3://{$bucket}/{$object['path']}";
+        $request = $this->s3Client->createPresignedRequest(
+    		$this->s3Client->getCommand('GetObject', [
+    			'Key'		=> $object['path'],
+    			'Bucket'	=> $bucket,
+    		]),
+    		'+1 day'
+		);
 
-        if ($stream = fopen($objectDir, 'r', false, $context)) {
+
+        $tmpfile = tempnam(sys_get_temp_dir(), crc32(time()));
+
+        $httpClient->request('GET', (string) $request->getUri(), array(
+            'synchronous'	=> TRUE,
+            'sink'			=> fopen($tmpfile, 'w+')
+        ));
+
+        if ($stream = fopen($tmpfile, 'r', false, $context)) {
           $zip->addFileFromStream($objectName, $stream);
         }
       }
