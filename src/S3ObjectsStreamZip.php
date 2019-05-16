@@ -22,9 +22,12 @@
     {
       $this->authValidation($auth);
       $this->s3Client();
-      
+
       $this->opt = new ArchiveOptions();
-      $this->opt->setLargeFileMethod(ArchiveMethod::STORE());
+    }
+
+    public function setLargeFileMethod() {
+        $this->opt->setLargeFileMethod(ArchiveMethod::STORE());
     }
 
     public function setEnableZip64()
@@ -42,9 +45,9 @@
         $this->opt->setSendHttpHeaders(TRUE);
     }
 
-    public function  setContentType($contentType = 'application/zip')
+    public function setContentType($type = 'application/zip')
     {
-       $this->opt->setContentType('application/zip');
+       $this->opt->setContentType($type);
     }
 
     public function zipObjects($bucket, $objects, $zipname, $checkObjectExist = false)
