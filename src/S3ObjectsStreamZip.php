@@ -5,6 +5,7 @@
   use Aws\S3\S3Client;
   use WGenial\S3ObjectsStreamZip\Exception\InvalidParamsException;
   use ZipStream\ZipStream;
+  use ZipStream\Option\Archive as ArchiveOptions;
 
   class S3ObjectsStreamZip
   {
@@ -17,7 +18,7 @@
       $this->s3Client();
     }
 
-    public function zipObjects($bucket, $objects, $zipname, $checkObjectExist = false)
+    public function zipObjects($bucket, $objects, $zipname, $checkObjectExist = false, ?ArchiveOptions $opt = null)
     {
       $this->paramsValidation(array(
         "bucket" => $bucket,
@@ -26,7 +27,7 @@
         "checkObjectExist" => $checkObjectExist
       ));
 
-      $zip = new ZipStream($zipname);
+      $zip = new ZipStream($zipname, $opt);
 
       foreach ($objects as $object) {
         $objectName = isset($object['name']) ? $object['name'] : basename($object['path']);
