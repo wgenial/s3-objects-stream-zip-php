@@ -73,14 +73,21 @@
 
     protected function s3Client()
     {
-      $s3Client = new S3Client(array(
+      $config = [
         'version' => $this->auth['version'],
         'region' => $this->auth['region'],
         'credentials' => array(
           'key' => $this->auth['credentials']['key'],
           'secret' => $this->auth['credentials']['secret']
         )
-      ));
+      ];
+      if (isset($this->auth['endpoint']) AND !empty($this->auth['endpoint'])) {
+        $config['endpoint'] = $this->auth['endpoint'];
+      }
+      if (isset($this->auth['bucket_endpoint'])) {
+        $config['bucket_endpoint'] = $this->auth['bucket_endpoint'];
+      }
+      $s3Client = new S3Client($config);
 
       $this->s3Client = $s3Client;
       $this->s3Client->registerStreamWrapper();
