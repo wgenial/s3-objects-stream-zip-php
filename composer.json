@@ -1,32 +1,42 @@
 {
-	"name": "wgenial/s3-objects-stream-zip-php",
-	"homepage": "https://github.com/wgenial/s3-objects-stream-zip-php",
-	"description": "S3ObjectsStreamZip is a PHP library to stream objects from AWS S3 as a zip file.",
-	"keywords": ["aws-s3","zip","compress","ziparchive","s3-bucket","s3-storage","amazon-s3-storage","amazon-s3", "aws-php-sdk"],
-	"type": "library",
-	"require": {
-		"aws/aws-sdk-php": "^3.145",
-		"maennchen/zipstream-php": "^2.1",
-		"guzzlehttp/guzzle": "^7.0"
-	},
-	"require-dev": {
-		"phpunit/phpunit": "^8.1"
-	},
-	"autoload": {
-		"psr-4": {
-			"WGenial\\S3ObjectsStreamZip\\": "src/"
-		}
-	},
-	"license": "MIT",
-	"authors": [
-		{
+  "name": "wgenial/s3-objects-stream-zip-php",
+  "homepage": "https://github.com/wgenial/s3-objects-stream-zip-php",
+  "description": "S3ObjectsStreamZip is a PHP library to stream objects from AWS S3 as a zip file.",
+  "keywords": [
+    "aws-s3",
+    "zip",
+    "compress",
+    "ziparchive",
+    "s3-bucket",
+    "s3-storage",
+    "amazon-s3-storage",
+    "amazon-s3",
+    "aws-php-sdk"
+  ],
+  "type": "library",
+  "require": {
+    "aws/aws-sdk-php": "^3.147",
+    "maennchen/zipstream-php": "^2.1",
+    "guzzlehttp/guzzle": ">= 6.5"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "^8.1"
+  },
+  "autoload": {
+    "psr-4": {
+      "WGenial\\S3ObjectsStreamZip\\": "src/"
+    }
+  },
+  "license": "MIT",
+  "authors": [
+    {
       "name": "Giovani Generali",
       "email": "giovani.generali@gmail.com",
-			"homepage": "https://github.com/giovanigenerali",
-			"role": "Developer"
+      "homepage": "https://github.com/giovanigenerali",
+      "role": "Developer"
     }
-	],
-	"scripts": {
-		"test": "./vendor/bin/phpunit --configuration ./phpunit.xml --colors=always"
-	}
+  ],
+  "scripts": {
+    "test": "./vendor/bin/phpunit --configuration ./phpunit.xml --colors=always"
+  }
 }
