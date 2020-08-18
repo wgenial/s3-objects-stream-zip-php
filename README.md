@@ -25,8 +25,6 @@ See [example](https://github.com/wgenial/s3-objects-stream-zip-php/blob/master/e
 
 ## Authors
 * [@giovanigenerali](https://github.com/giovanigenerali)
-* [@wgenial](https://github.com/wgenial)
-
 
 ## Contributors
 * [@sjoerdstaal](https://github.com/sjoerdstaal)
