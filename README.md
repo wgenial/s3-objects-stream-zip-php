@@ -1,7 +1,7 @@
 # S3ObjectsStreamZip
 
 [![Packagist](https://img.shields.io/packagist/v/wgenial/s3-objects-stream-zip-php?style=for-the-badge)](https://packagist.org/packages/wgenial/s3-objects-stream-zip-php)
-![PHP Version](https://img.shields.io/packagist/php-v/wgenial/s3-objects-stream-zip-php?style=for-the-badge)
+[![PHP Version](https://img.shields.io/packagist/php-v/wgenial/s3-objects-stream-zip-php?style=for-the-badge)](https://github.com/wgenial/s3-objects-stream-zip-php/blob/master/composer.json#L18)
 [![Codacy](https://img.shields.io/codacy/grade/719df2ec6ebf460e85bb2192f82758b7?style=for-the-badge)](https://www.codacy.com/app/giovanigenerali/s3-objects-stream-zip-php)
 [![Travis](https://img.shields.io/travis/wgenial/s3-objects-stream-zip-php?style=for-the-badge&label=travis)](https://travis-ci.org/wgenial/s3-objects-stream-zip-php)
 [![License](https://img.shields.io/packagist/l/wgenial/s3-objects-stream-zip-php?style=for-the-badge)](https://github.com/wgenial/s3-objects-stream-zip-php/blob/master/LICENSE)
