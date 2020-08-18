@@ -1,0 +1,39 @@
+name: Test
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  test:
+    name: Test PHP ${{ matrix.php-version }}
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        php-version: ['5.6', '7.0', '7.1', '7.2', '7.3', '7.4']
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+
+    - name: Setup PHP
+      uses: shivammathur/setup-php@v2
+      with:
+        php-version: ${{ matrix.php-version }}
+
+    - name: PHP Version
+      run: php --version
+
+    - name: Composer Version
+      run: composer --version
+
+    - name: Validate composer.json and composer.lock
+      run: composer validate
+
+    - name: Install Dependencies
+      run: COMPOSER_MEMORY_LIMIT=-1 composer install --prefer-dist --no-progress --no-suggest
+
+    - name: Run Tests
+      run: composer run-script test
