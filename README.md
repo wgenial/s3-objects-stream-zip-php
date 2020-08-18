@@ -1,21 +1,25 @@
 # S3ObjectsStreamZip
 
-[![Packagist](https://img.shields.io/packagist/v/wgenial/s3-objects-stream-zip-php.svg)](https://packagist.org/packages/wgenial/s3-objects-stream-zip-php)
-[![Codacy Badge](https://api.codacy.com/project/badge/Grade/719df2ec6ebf460e85bb2192f82758b7)](https://www.codacy.com/app/giovanigenerali/s3-objects-stream-zip-php?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=wgenial/s3-objects-stream-zip-php&amp;utm_campaign=Badge_Grade)
-[![Build Status](https://travis-ci.org/wgenial/s3-objects-stream-zip-php.svg?branch=master)](https://travis-ci.org/wgenial/s3-objects-stream-zip-php)
-[![GitHub license](https://img.shields.io/github/license/wgenial/s3-objects-stream-zip-php.svg)](https://github.com/wgenial/s3-objects-stream-zip-php/blob/master/LICENSE)
+[![Packagist](https://img.shields.io/packagist/v/wgenial/s3-objects-stream-zip-php?style=for-the-badge)](https://packagist.org/packages/wgenial/s3-objects-stream-zip-php)
+![PHP Version](https://img.shields.io/packagist/php-v/wgenial/s3-objects-stream-zip-php?style=for-the-badge)
+[![Codacy](https://img.shields.io/codacy/grade/719df2ec6ebf460e85bb2192f82758b7?style=for-the-badge)](https://www.codacy.com/app/giovanigenerali/s3-objects-stream-zip-php)
+[![Travis](https://img.shields.io/travis/wgenial/s3-objects-stream-zip-php?style=for-the-badge&label=travis)](https://travis-ci.org/wgenial/s3-objects-stream-zip-php)
+[![License](https://img.shields.io/packagist/l/wgenial/s3-objects-stream-zip-php?style=for-the-badge)](https://github.com/wgenial/s3-objects-stream-zip-php/blob/master/LICENSE)
 
 ## Overview
+
 S3ObjectsStreamZip is a PHP library to stream objects from AWS S3 as a zip file.
 
 Uses AWS SDK Version 3 to [stream objects directly from S3](https://docs.aws.amazon.com/aws-sdk-php/v3/guide/service/s3-stream-wrapper.html).
 
 ## Install
+
 ```
 composer require wgenial/s3-objects-stream-zip-php
 ```
 
 ## Usage
+
 See [example](https://github.com/wgenial/s3-objects-stream-zip-php/blob/master/example/index.php) folder.
 
 ```php
@@ -72,14 +76,17 @@ See [example](https://github.com/wgenial/s3-objects-stream-zip-php/blob/master/e
 ```
 
 ## Dependencies
-* ```aws/aws-sdk-php```
-* ```maennchen/zipstream-php```
-* ```guzzlehttp/guzzle```
+
+- `aws/aws-sdk-php`
+- `maennchen/zipstream-php`
+- `guzzlehttp/guzzle`
 
 ## Authors
-* [@giovanigenerali](https://github.com/giovanigenerali)
+
+- [@giovanigenerali](https://github.com/giovanigenerali)
 
 ## Contributors
-* [@sjoerdstaal](https://github.com/sjoerdstaal)
-* [@florianv](https://github.com/florianv)
-* [@marcelod](https://github.com/marcelod)
+
+- [@sjoerdstaal](https://github.com/sjoerdstaal)
+- [@florianv](https://github.com/florianv)
+- [@marcelod](https://github.com/marcelod)
