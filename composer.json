@@ -15,6 +15,7 @@
   ],
   "type": "library",
   "require": {
+    "php": ">=7.2",
     "aws/aws-sdk-php": "^3.147",
     "maennchen/zipstream-php": "^2.1",
     "guzzlehttp/guzzle": "^6.5|^7.0"
