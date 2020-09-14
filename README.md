@@ -81,7 +81,7 @@ See [example](https://github.com/wgenial/s3-objects-stream-zip-php/blob/master/e
 - `maennchen/zipstream-php`
 - `guzzlehttp/guzzle`
 
-## Authors
+## Author
 
 - [@giovanigenerali](https://github.com/giovanigenerali)
 
