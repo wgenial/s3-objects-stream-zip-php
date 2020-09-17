@@ -3,6 +3,7 @@
 [![Packagist](https://img.shields.io/packagist/v/wgenial/s3-objects-stream-zip-php?style=for-the-badge)](https://packagist.org/packages/wgenial/s3-objects-stream-zip-php)
 [![PHP Version](https://img.shields.io/packagist/php-v/wgenial/s3-objects-stream-zip-php?style=for-the-badge)](https://github.com/wgenial/s3-objects-stream-zip-php/blob/master/composer.json#L18)
 [![Codacy](https://img.shields.io/codacy/grade/564e1f208bab4916bad61cdacbca450a?style=for-the-badge)](https://app.codacy.com/gh/wgenial/s3-objects-stream-zip-php)
+[![GitHub Workflow Status](https://img.shields.io/github/workflow/status/wgenial/s3-objects-stream-zip-php/Test?label=test&logo=github&style=for-the-badge)](https://github.com/wgenial/s3-objects-stream-zip-php/actions?query=workflow%3ATest)
 [![Travis](https://img.shields.io/travis/wgenial/s3-objects-stream-zip-php?style=for-the-badge&label=travis)](https://travis-ci.org/wgenial/s3-objects-stream-zip-php)
 [![License](https://img.shields.io/packagist/l/wgenial/s3-objects-stream-zip-php?style=for-the-badge)](https://github.com/wgenial/s3-objects-stream-zip-php/blob/master/LICENSE)
 
