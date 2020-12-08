@@ -3,7 +3,6 @@
 
   use WGenial\S3ObjectsStreamZip\S3ObjectsStreamZip;
   use WGenial\S3ObjectsStreamZip\Exception;
-  use WGenial\S3ObjectsStreamZip\Exception\InvalidParamsException;
 
   class S3ObjectsStreamZipTest extends \PHPUnit\Framework\TestCase
   {
