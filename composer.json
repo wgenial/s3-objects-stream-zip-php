@@ -28,6 +28,11 @@
       "WGenial\\S3ObjectsStreamZip\\": "src/"
     }
   },
+  "autoload-dev": {
+    "psr-4": {
+      "WGenial\\S3ObjectsStreamZipTest\\": "tests/"
+    }
+  },
   "license": "MIT",
   "authors": [
     {
